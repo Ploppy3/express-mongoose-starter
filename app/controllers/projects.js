@@ -16,11 +16,11 @@ class ControllerProjects extends Controller {
   }
 
   post() {
-    if (this.validateBodyParams(['name'], Project.schema)) {
+    if (this.validateBodyFormData(['name'], Project.schema)) {
       const project = new Project({ name: this.req.body.name });
       project.save().then(() => {
-        this.res.json('success');
-      });
+        this.res.json(project);
+      }).catch(this.next);
     }
   }
 

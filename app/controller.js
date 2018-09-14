@@ -5,9 +5,7 @@ class Controller {
   constructor() {
   }
 
-  validateBodyParams(/**@type {string[]}*/ keys, /**@type {Schema}*/ schema) {
-    console.log(this.req.body);
-    console.log(schema.paths);
+  validateBodyFormData(/**@type {string[]}*/ keys, /**@type {Schema}*/ schema) {
     const missingKeys = [];
     keys.forEach(key => {
       if (!(key in this.req.body)) {
@@ -22,7 +20,6 @@ class Controller {
   }
 
   validateQueryParams(/**@type {string[]}*/ keys) {
-    console.log(req.query);
     const missingKeys = [];
     keys.forEach(key => {
       if (!(key in this.req.query)) {
@@ -65,7 +62,6 @@ class Controller {
   }
 
   _isReqBodyUndefined() {
-    console.log(this.req.body);
     if (this.req.body === undefined) {
       this.res.status(400).json('bad request');
       return true;
@@ -74,4 +70,5 @@ class Controller {
   }
 
 }
+
 module.exports = Controller;
