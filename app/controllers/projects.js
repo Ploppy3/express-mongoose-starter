@@ -4,7 +4,7 @@ const Project = require('../models/project');
 class ControllerProjects extends Controller {
 
   get() {
-    Project.find().then(projects => {
+    Project.find({}, 'name').then(projects => {
       if (projects !== null) {
         this.res.json(projects);
       } else {
